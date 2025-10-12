@@ -8,12 +8,21 @@
 </head>
 
 <body>
+    <?php
+    $name = "Dark Matters";
+    $read = false;
+
+    if ($read) {
+        $message = "You have read $name";
+    } else {
+        $message = "You have NOT read $name";
+    };
+
+    ?>
+
+
     <h1>
-        <?php
-        $greeting = "Hello";
-        echo "$greeting Buddy.";
-        echo $greeting . " " . "Everyone.";
-        ?>
+        <?= $message; ?>
     </h1>
 </body>
 
