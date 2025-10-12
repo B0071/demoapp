@@ -8,22 +8,23 @@
 </head>
 
 <body>
+    <h1>Recommended books</h1>
+
     <?php
-    $name = "Dark Matters";
-    $read = false;
-
-    if ($read) {
-        $message = "You have read $name";
-    } else {
-        $message = "You have NOT read $name";
-    };
-
+    $books = [
+        "Do Androids dream of Electric Sheeps",
+        "Langoliers",
+        "Hail Mary"
+    ];
     ?>
 
+    <ul>
+        <?php foreach ($books as $book) : ?>
+            <li><?= $book; ?></li>
+        <?php endforeach; ?>
+    </ul>
 
-    <h1>
-        <?= $message; ?>
-    </h1>
 </body>
+
 
 </html>
