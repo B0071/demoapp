@@ -33,22 +33,29 @@
         ]
     ];
 
-    function filterByAuthor($books, $author)
-    {
-        $filteredBooks = [];
 
-        foreach ($books as $book) {
-            if ($book['author'] === $author) {
-                $filteredBooks[] = $book;
-            }
-        }
+    // Instead of this function we are using array_filter() from php 
+    // function filter($items, $fn)
+    // {
+    //     $filteredItems = [];
 
-        return $filteredBooks;
-    };
+    //     foreach ($items as $item) {
+    //         if ($fn($item)) {
+    //             $filteredItems[] = $item;
+    //         }
+    //     }
+
+    //     return $filteredItems;
+    // };
+
+    $filteredBooks = array_filter($books, function ($book) {
+        return $book['releaseYear'] < 2022;
+    });
+
     ?>
 
     <ul>
-        <?php foreach (filterByAuthor($books, "Andy Weir") as $book) : ?>
+        <?php foreach ($filteredBooks as $book) : ?>
             <li>
                 <a href="<?= $book['purchaseUrl']; ?>">
                     <?= $book['name']; ?> (<?= $book['releaseYear']; ?>) - By <?= $book['author']; ?>
