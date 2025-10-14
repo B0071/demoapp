@@ -2,6 +2,4 @@
 
 require 'functions.php';
 
-$heading = "Dashboard";
-
-require 'views/index.view.php';
+require 'router.php';
