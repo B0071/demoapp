@@ -2,16 +2,22 @@
 
 require 'functions.php';
 
+require 'Database.php';
+
 // require 'router.php';
 
-$dsn = 'mysql:host=127.0.0.1;port=3306;dbname=demoapp;user=root;charset=utf8mb4';
-$pdo = new PDO($dsn);
+$db = new Database();
 
-$statement = $pdo->prepare("select * from posts");
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+// getting multiple posts with fetchAll() method.
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($posts as $post) {
     echo '<li>' . $post['title'] . '</li>';
 }
+
+echo '<br>';
+
+// getting SINLE post with fetch() method. 
+$post1 = $db->query("select * from posts where id = 1")->fetch(PDO::FETCH_ASSOC);
+
+echo $post1['title'];
