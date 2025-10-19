@@ -6,10 +6,12 @@ require 'Database.php';
 
 // require 'router.php';
 
-$db = new Database();
+$config = require('config.php');
+
+$db = new Database($config['database']);
 
 // getting multiple posts with fetchAll() method.
-$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
+$posts = $db->query("select * from posts")->fetchAll();
 
 foreach ($posts as $post) {
     echo '<li>' . $post['title'] . '</li>';
@@ -18,6 +20,6 @@ foreach ($posts as $post) {
 echo '<br>';
 
 // getting SINLE post with fetch() method. 
-$post1 = $db->query("select * from posts where id = 1")->fetch(PDO::FETCH_ASSOC);
+$post1 = $db->query("select * from posts where id = 1")->fetch();
 
 echo $post1['title'];
