@@ -10,16 +10,16 @@ $config = require('config.php');
 
 $db = new Database($config['database']);
 
-// getting multiple posts with fetchAll() method.
-$posts = $db->query("select * from posts")->fetchAll();
+$id = $_GET['id'];
 
-foreach ($posts as $post) {
-    echo '<li>' . $post['title'] . '</li>';
-}
+$query = "select * from posts where id = :id";
 
-echo '<br>';
+$post = $db->query($query, [
+    ':id' => $id
+])->fetch();
 
-// getting SINLE post with fetch() method. 
-$post1 = $db->query("select * from posts where id = 1")->fetch();
+dd($post);
 
-echo $post1['title'];
+// foreach ($posts as $post) {
+//     echo '<li>' . $post['title'] . '</li>';
+// }
