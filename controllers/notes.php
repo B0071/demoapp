@@ -7,6 +7,6 @@ $db = new Database($config['database']);
 
 $notes = [];
 
-$notes = $db->query("select * from notes where user_id = 1")->fetchAll();
+$notes = $db->query("select * from notes where user_id = 1")->get();
 
 require 'views/notes.view.php';
