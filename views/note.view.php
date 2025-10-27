@@ -8,10 +8,10 @@
                     <a href="/notes">Go Back</a>
                 </div>
                 <div style="font-size:larger; font-weight: 700;">
-                    <?= $note['title']; ?>
+                    <?= htmlspecialchars($note['title']); ?>
                 </div>
                 <div>
-                    <?= $note['context']; ?>
+                    <?= htmlspecialchars($note['context']); ?>
                 </div>
 
             </div>
