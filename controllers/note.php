@@ -9,4 +9,15 @@ $note = $db->query("select * from notes where id = :id", [
     ':id' => $_GET['id']
 ])->fetch();
 
+if (! $note) {
+    abort();
+}
+
+$currentUser = 1;
+
+if ($note['user_id'] !== $currentUser) {
+    abort(Response::FORBIDDEN);
+}
+
+
 require 'views/note.view.php';
