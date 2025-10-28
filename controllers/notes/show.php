@@ -3,6 +3,8 @@
 $heading = "My Note";
 $currentUser = 1;
 
+use Core\Database;
+
 $config = require base_path('config.php');
 $db = new Database($config['database']);
 
