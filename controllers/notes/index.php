@@ -1,11 +1,10 @@
 <?php
 
-use Core\Database;
+use Core\App;
 
 $heading = "My Notes";
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::container()->resolve('Core\Database');
 
 $notes = [];
 

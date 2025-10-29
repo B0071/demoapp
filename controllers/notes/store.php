@@ -4,11 +4,10 @@ $heading = 'New Note';
 
 require base_path('Core/Validator.php');
 
-use Core\Database;
+use Core\App;
 use Core\Validator;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::container()->resolve('Core\Database');
 
 $errors = [];
 
