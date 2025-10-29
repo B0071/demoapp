@@ -4,7 +4,7 @@ use Core\App;
 
 $heading = "My Notes";
 
-$db = App::container()->resolve('Core\Database');
+$db = App::resolve('Core\Database');
 
 $notes = [];
 

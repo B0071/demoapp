@@ -7,7 +7,7 @@ require base_path('Core/Validator.php');
 use Core\App;
 use Core\Validator;
 
-$db = App::container()->resolve('Core\Database');
+$db = App::resolve('Core\Database');
 
 $errors = [];
 

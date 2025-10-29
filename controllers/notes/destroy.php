@@ -6,7 +6,7 @@ use Core\App;
 
 $currentUser = 1;
 
-$db = App::container()->resolve('Core\Database');
+$db = App::resolve('Core\Database');
 
 // check whether note exists or not
 $note = $db->query("select * from notes where id = :id", [
