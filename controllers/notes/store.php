@@ -2,8 +2,6 @@
 
 $heading = 'New Note';
 
-require base_path('Core/Validator.php');
-
 use Core\App;
 use Core\Validator;
 

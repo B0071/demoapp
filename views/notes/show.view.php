@@ -13,11 +13,14 @@
                 <div>
                     <?= htmlspecialchars($note['context']); ?>
                 </div>
-                <form method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="id" value="<?= $note['id']; ?>">
-                    <button class="text-sm text-red-500 mt-4">Delete</button>
-                </form>
+                <div class="flex justify-start gap-x-4">
+                    <form method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="id" value="<?= $note['id']; ?>">
+                        <button class="rounded-md bg-red-500 px-3 py-2 mt-4 text-sm font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</button>
+                    </form>
+                    <a href="/note/edit?id=<?= $note['id']; ?>" class="rounded-md bg-yellow-500 px-3 py-2 mt-4 text-sm font-semibold text-white shadow-xs hover:bg-yello-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Edit</a>
+                </div>
 
             </div>
         </main>
