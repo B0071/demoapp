@@ -48,7 +48,7 @@ if (!empty($user)) {
     // if not, create new user, login-in the user, redirect to home. 
     $db->query("INSERT into users (email, password) VALUES (:email, :password)", [
         ':email' => $email,
-        ':password' => $password
+        ':password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
     $lastUserID = $db->giveLastInsertedId();
