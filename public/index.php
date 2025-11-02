@@ -20,3 +20,6 @@ $method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHO
 $routes = require base_path('routes.php');
 
 $router->route($method, $uri);
+
+// way to see routes array. 
+// $router->dumster();
