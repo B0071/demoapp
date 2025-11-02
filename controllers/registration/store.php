@@ -51,8 +51,11 @@ if (!empty($user)) {
         ':password' => $password
     ]);
 
+    $lastUserID = $db->giveLastInsertedId();
+
     $_SESSION['user'] = [
-        'email' => $email
+        'email' => $email,
+        'currentUser' => $lastUserID
     ];
 
     header('location: /');
