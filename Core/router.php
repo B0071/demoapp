@@ -2,8 +2,7 @@
 
 namespace Core;
 
-use Core\Middleware\Guest;
-use Core\Middleware\Auth;
+use Core\Middleware\Middleware;
 
 class Router
 {
@@ -28,22 +27,22 @@ class Router
 
     public function post($uri, $controller)
     {
-        $this->add($uri, $controller, 'POST');
+        return $this->add($uri, $controller, 'POST');
     }
 
     public function delete($uri, $controller)
     {
-        $this->add($uri, $controller, 'DELETE');
+        return $this->add($uri, $controller, 'DELETE');
     }
 
     public function put($uri, $controller)
     {
-        $this->add($uri, $controller, 'PUT');
+        return $this->add($uri, $controller, 'PUT');
     }
 
     public function patch($uri, $controller)
     {
-        $this->add($uri, $controller, 'PATCH');
+        return $this->add($uri, $controller, 'PATCH');
     }
 
     public function route($method, $uri)
@@ -51,14 +50,7 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
-
-                if ($route['middleware'] === 'guest') {
-                    (new Guest)->handle();
-                }
-
-                if ($route['middleware'] === 'auth') {
-                    (new Auth)->handle();
-                }
+                Middleware::resolve($route['middleware']);
 
                 require base_path($route['controller']);
             }
