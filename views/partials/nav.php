@@ -32,7 +32,8 @@
                                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
                             <?php else : ?>
                                 <p style="color: white;">
-                                    <a href="/register" class="block px-4 py-2 text-sm text-white-500 focus:bg-white-100 focus:outline-hidden">Register Here</a>
+                                    <a href="/register" class=" px-4 text-sm text-white-500 focus:bg-white-100 focus:outline-hidden">Register</a>
+                                    <a href="/login" class=" px-4 text-sm text-white-500 focus:bg-white-100 focus:outline-hidden">Log In</a>
                                 </p>
                             <?php endif; ?>
                         </button>

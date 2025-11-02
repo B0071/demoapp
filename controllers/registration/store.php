@@ -51,12 +51,14 @@ if (!empty($user)) {
         ':password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    $lastUserID = $db->giveLastInsertedId();
+    // $lastUserID = $db->giveLastInsertedId();
 
-    $_SESSION['user'] = [
-        'email' => $email,
-        'currentUser' => $lastUserID
-    ];
+    // $_SESSION['user'] = [
+    //     'currentUser' => $lastUserID
+    // ];
+    login([
+        'email' => $email
+    ]);
 
     header('location: /');
     exit();
