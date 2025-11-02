@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use Core\Middleware\Guest;
+use Core\Middleware\Auth;
+
 class Router
 {
     public $routes = [];
@@ -11,13 +14,16 @@ class Router
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            'middleware' => null
         ];
+
+        return $this;
     }
 
     public function get($uri, $controller)
     {
-        $this->add($uri, $controller, 'GET');
+        return $this->add($uri, $controller, 'GET');
     }
 
     public function post($uri, $controller)
@@ -44,6 +50,16 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+
+
+                if ($route['middleware'] === 'guest') {
+                    (new Guest)->handle();
+                }
+
+                if ($route['middleware'] === 'auth') {
+                    (new Auth)->handle();
+                }
+
                 require base_path($route['controller']);
             }
         }
@@ -54,6 +70,12 @@ class Router
     public function dumster()
     {
         dd($this->routes);
+    }
+
+    public function only($key)
+    {
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+        // dd($this->routes);
     }
 
     protected function abort($code = 404)
