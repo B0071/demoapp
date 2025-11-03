@@ -23,6 +23,5 @@ if (empty($errors)) {
         ]
     );
 
-    header('location: /notes');
-    exit();
+    redirect('/notes');
 }

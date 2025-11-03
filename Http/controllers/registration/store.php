@@ -2,6 +2,7 @@
 
 use Core\Validator;
 use Core\App;
+use Core\Authenticator;
 use Core\Database;
 
 $email = $_POST['email'];
@@ -27,8 +28,7 @@ if (!empty($errors)) {
         'errors' => $errors
     ]);
 
-    header('location: /register');
-    exit();
+    redirect('/register');
 };
 
 // check whether user exists.
@@ -56,10 +56,10 @@ if (!empty($user)) {
     // $_SESSION['user'] = [
     //     'currentUser' => $lastUserID
     // ];
-    login([
+
+    (new Authenticator)->login([
         'email' => $email
     ]);
 
-    header('location: /');
-    exit();
+    redirect('/');
 }

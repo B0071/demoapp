@@ -37,12 +37,4 @@ $db->query("update notes set title = :title, context = :context where id = :id",
 ]);
 
 // redirect to notes
-header('location: /notes');
-die();
-
-
-
-
-
-
-// if errors exist, i
+redirect('/notes');
