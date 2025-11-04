@@ -19,7 +19,14 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
 $routes = require base_path('routes.php');
 
-$router->route($method, $uri);
+// echo 'before routing';
+
+$router->route($uri, $method);
+
+// echo 'after it';
+
+// unset(); code didn't execute because execution stopped after $router->route(); route() method was missing return statement and code continued and executed die() in the end before executing unset. 
+unset($_SESSION['_flash']);
 
 // way to see routes array. 
 // $router->dumster();

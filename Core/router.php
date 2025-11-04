@@ -45,14 +45,15 @@ class Router
         return $this->add($uri, $controller, 'PATCH');
     }
 
-    public function route($method, $uri)
+    public function route($uri, $method)
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
                 Middleware::resolve($route['middleware']);
 
-                require base_path('Http/controllers/' . $route['controller']);
+                // since "return" word was missing here, code execution didn't end and it executed $this->abort(); too. 
+                return require base_path('Http/controllers/' . $route['controller']);
             }
         }
 

@@ -16,6 +16,10 @@ if ($form->validate($email, $password)) {
     }
 }
 
-return view('session/create.view.php', [
-    'errors' => $form->errors()
-]);
+$_SESSION['_flash']['errors'] = $form->errors();
+
+return redirect('/login');
+
+// return view('session/create.view.php', [
+//     'errors' => $form->errors()
+// ]);

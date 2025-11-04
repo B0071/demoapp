@@ -1,5 +1,5 @@
 <?php
 
 view('/session/create.view.php', [
-    'errors' => []
+    'errors' => $_SESSION['_flash']['errors'] ?? []
 ]);
