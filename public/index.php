@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH . 'Core/functions.php';
@@ -10,6 +8,10 @@ spl_autoload_register(function ($class) {
     $class = str_replace('\\', '/', $class);
     require base_path("{$class}.php");
 });
+
+use Core\Session;
+
+Session::start();
 
 require base_path('bootstrap.php');
 
@@ -26,7 +28,7 @@ $router->route($uri, $method);
 // echo 'after it';
 
 // unset(); code didn't execute because execution stopped after $router->route(); route() method was missing return statement and code continued and executed die() in the end before executing unset. 
-unset($_SESSION['_flash']);
+Session::unflash();
 
 // way to see routes array. 
 // $router->dumster();
