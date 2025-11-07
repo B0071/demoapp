@@ -17,6 +17,10 @@ if ($form->validate($email, $password)) {
     }
 }
 
+Session::flash('old', [
+    'email' => $email
+]);
+
 // $_SESSION['_flash']['errors'] = $form->errors();
 Session::flash('errors', $form->errors());
 
