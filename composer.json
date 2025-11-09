@@ -6,7 +6,9 @@
             "email": "BekhruzSHofficial@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/collections": "^12.37"
+    },
     "autoload": {
         "psr-4": {
             "Core\\": "Core/",
