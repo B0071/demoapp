@@ -10,6 +10,7 @@ spl_autoload_register(function ($class) {
 });
 
 use Core\Session;
+use Core\ValidationException;
 
 Session::start();
 
@@ -21,11 +22,14 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
 $routes = require base_path('routes.php');
 
-// echo 'before routing';
+try {
+    $router->route($uri, $method);
+} catch (ValidationException $exception) {
+    Session::flash('old', $exception->old);
+    Session::flash('errors', $exception->errors);
 
-$router->route($uri, $method);
-
-// echo 'after it';
+    return redirect($router->previousUrl());
+}
 
 // unset(); code didn't execute because execution stopped after $router->route(); route() method was missing return statement and code continued and executed die() in the end before executing unset. 
 Session::unflash();
