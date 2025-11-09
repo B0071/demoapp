@@ -1,0 +1,16 @@
+{
+    "name": "bekhruz-sharapov/demoapp",
+    "authors": [
+        {
+            "name": "Bekhruz Sharapov",
+            "email": "BekhruzSHofficial@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
